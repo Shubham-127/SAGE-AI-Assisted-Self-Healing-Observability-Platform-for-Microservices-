@@ -1,0 +1,22 @@
+server:
+  port: 8082                              # Payment's own door number
+
+spring:
+  application:
+    name: payment-service                 # this name appears in every metric note it publishes
+  kafka:
+    bootstrap-servers: localhost:9092     # same Kafka address as the other services
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+sage:
+  kafka:
+    topics:
+      metrics: sage.metrics               # same belt label, so all services use one belt

@@ -25,7 +25,7 @@ services:
     image: pgvector/pgvector:pg16
     container_name: sage-postgres
     ports:
-      - "5432:5432"
+      - "5433:5432"
     environment:
       POSTGRES_USER: sage
       POSTGRES_PASSWORD: sage

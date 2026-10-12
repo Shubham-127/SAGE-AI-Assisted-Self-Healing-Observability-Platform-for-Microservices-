@@ -1,0 +1,27 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: order-service
+  kafka:                                  # NEW: where Kafka lives
+    bootstrap-servers: localhost:9092     # the address we used in Docker
+    producer:
+      # Kafka sends bytes, so we say "our keys and values are plain text"
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+sage:
+  kafka:                                  # NEW: our own setting for the belt's label
+    topics:
+      metrics: sage.metrics
+  downstream:
+    inventory-url: http://localhost:8080
+    payment-url: http://localhost:8082
+    timeout-ms: 2000
