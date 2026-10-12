@@ -15,8 +15,7 @@ public class FaultInjectionController {
     // NONE      = working normally
     // SLOW      = respond, but only after 5 seconds
     // EXCEPTION = crash immediately
-    public enum FaultType { NONE, SLOW, EXCEPTION }
-
+    public enum FaultType { NONE, SLOW, EXCEPTION, DB_POOL_EXHAUSTED }
     // Remembers the current mode. Starts as NONE (healthy).
     // "volatile" = all web requests (which run on different threads)
     // always see the newest value, never an old copy.
